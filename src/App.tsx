@@ -1,22 +1,23 @@
 import viteLogo from '/vite.svg'
-
-// classの重複気にしなければstyled-jsxじゃなくstyleタグそのままでもいいかもね
+import { useState } from 'react'
 
 function App() {
+  const [color, setColor] = useState("red")
+
   return (
     <>
+      <style>{`
+        .test {
+          color: ${color};
+        }
+      `}</style>
+
       <div>
         <img src={viteLogo} className="logo" alt="Vite logo" />
       </div>
-      <h1>Vite + React</h1>
-      <h2 className="text-3xl font-bold underline">
-        Hello world!
-      </h2>
-      <style jsx>{`
-        h1 {
-          color: red;
-        }
-      `}</style>
+      <h1 className="test">aaaaa</h1>
+      <h2 className="text-3xl font-bold underline">aaaaa</h2>
+      <button onClick={() => setColor(color == "red" ? "green" : "red")}>color</button>
     </>
   )
 }
